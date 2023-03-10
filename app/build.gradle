@@ -20,6 +20,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // baseUrl
+        buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/api/\"")
+
     }
 
     buildTypes {
@@ -56,6 +60,19 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    // retrofit and moshi
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.moshi:moshi:1.14.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
+
+    // http log interceptor
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.7"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7"
+
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
     // epoxy
     def epoxyVersion = "5.1.1"
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
@@ -63,7 +80,7 @@ dependencies {
 
 
     // recyclerview
-    def recyclerviewVersion = "1.3.0-rc01"
+    def recyclerviewVersion = "1.3.0"
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
 
     // coil
