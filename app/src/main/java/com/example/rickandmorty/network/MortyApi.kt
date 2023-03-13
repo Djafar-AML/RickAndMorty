@@ -1,10 +1,14 @@
 package com.example.rickandmorty.network
 
+import com.example.rickandmorty.GetCharacterByIdResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface RickAndMortyApi {
 
-    @GET("https://rickandmortyapi.com/api/location/3")
-    suspend fun getData(): Any
+    @GET("character/{character-id}")
+    suspend fun getData(
+        @Path("character-id") characterId: Int
+    ): GetCharacterByIdResponse
 
 }

@@ -16,8 +16,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        myViewModel.let {
-            println()
+
+        myViewModel.data.observe(this) {
+            binding.dummyTextView.apply {
+                text = it?.name
+            }
         }
 
     }
