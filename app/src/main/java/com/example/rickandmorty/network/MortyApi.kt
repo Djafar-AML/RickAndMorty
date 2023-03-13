@@ -5,6 +5,6 @@ import retrofit2.http.GET
 interface RickAndMortyApi {
 
     @GET("https://rickandmortyapi.com/api/location/3")
-    suspend fun getData(): String
+    suspend fun getData(): Any
 
 }

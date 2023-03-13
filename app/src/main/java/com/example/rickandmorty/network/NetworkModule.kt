@@ -21,17 +21,25 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
 
         return OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor())
+            .addInterceptor(httpLoggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
 
     }
 
-    private fun httpLoggingInterceptor(): HttpLoggingInterceptor {
+    @Provides
+    @Singleton
+    fun provideMoshiInstance(): Moshi {
+        return Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
 
         return HttpLoggingInterceptor().apply {
             level =
@@ -43,22 +51,23 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-
-        val moshi = moshiInstance()
+    fun provideRetrofit(okHttpClient: OkHttpClient, moshiConverterFactory: MoshiConverterFactory): Retrofit {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(moshiConverterFactory)
             .client(okHttpClient)
             .build()
     }
 
-    private fun moshiInstance() = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    @Provides
+    @Singleton
+    fun provideMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory =
+        MoshiConverterFactory.create(moshi)
 
     @Provides
     @Singleton
-    fun provideMyApi(retrofit: Retrofit): RickAndMortyApi {
+    fun provideRickAndMortyApi(retrofit: Retrofit): RickAndMortyApi {
         return retrofit.create(RickAndMortyApi::class.java)
     }
 

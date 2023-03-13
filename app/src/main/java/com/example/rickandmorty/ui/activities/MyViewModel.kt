@@ -14,7 +14,8 @@ class MyViewModel @Inject constructor(
     private val rickAndMortyApi: RickAndMortyApi
 ) : ViewModel() {
 
-    var data = ""
+    var data: Any? = null
+
     init {
         viewModelScope.launch {
 
@@ -23,7 +24,7 @@ class MyViewModel @Inject constructor(
             }
 
             data = deferredResult.await()
-            println(data)
+            println("data is here: $data")
 
         }
     }
