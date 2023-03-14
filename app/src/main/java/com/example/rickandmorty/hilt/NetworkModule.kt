@@ -1,6 +1,7 @@
-package com.example.rickandmorty.network
+package com.example.rickandmorty.hilt
 
 import com.example.rickandmorty.BuildConfig
+import com.example.rickandmorty.network.RickAndMortyApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
