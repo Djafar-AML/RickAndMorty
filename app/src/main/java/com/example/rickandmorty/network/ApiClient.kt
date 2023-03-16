@@ -1,6 +1,6 @@
 package com.example.rickandmorty.network
 
-import com.example.rickandmorty.GetCharacterByIdResponse
+import com.example.rickandmorty.network.response.GetCharacterByIdResponse
 import retrofit2.Response
 import javax.inject.Inject
 

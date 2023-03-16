@@ -1,6 +1,6 @@
 package com.example.rickandmorty.ui.activities.arch
 
-import com.example.rickandmorty.GetCharacterByIdResponse
+import com.example.rickandmorty.network.response.GetCharacterByIdResponse
 import com.example.rickandmorty.network.ApiClient
 
 class SharedRepo constructor(

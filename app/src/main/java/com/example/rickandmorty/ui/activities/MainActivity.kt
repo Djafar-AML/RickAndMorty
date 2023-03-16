@@ -5,8 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.ActivityMainBinding
-import com.example.rickandmorty.extensions.loadByCoil
 import com.example.rickandmorty.ui.activities.arch.SharedViewModel
+import com.example.rickandmorty.ui.activities.epoxy.controller.CharacterDetailsEpoxyController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,37 +16,27 @@ class MainActivity : AppCompatActivity() {
 
     private val sharedViewModel: SharedViewModel by viewModels()
 
+    private val epoxyController: CharacterDetailsEpoxyController by lazy { CharacterDetailsEpoxyController() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initEpoxyRecyclerView()
+        setupObservers()
+
+    }
+
+    private fun setupObservers() {
 
         sharedViewModel.characterByIdLiveData.observe(this) { character ->
-
             character ?: return@observe
-
-            binding.apply {
-                nameTextView.text = character.name
-                aliveTextView.text = character.status
-                speciesTextView.text = character.species
-                originTextView.text = character.origin.name
-                character.image.let { imageUrl ->
-                    this.headerImageView.loadByCoil(imageUrl)
-                }
-
-                val imageType = genderImageType(character.gender)
-                genderImageView.setImageResource(imageType)
-
-            }
+            epoxyController.characterResponse = character
         }
+
     }
 
-    private fun genderImageType(gender: String?): Int {
-
-        return if (gender.equals("male", true)) {
-            R.drawable.ic_male_24
-        } else {
-            R.drawable.ic_female_24
-        }
+    private fun initEpoxyRecyclerView() {
+        binding.epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
+
 
 }

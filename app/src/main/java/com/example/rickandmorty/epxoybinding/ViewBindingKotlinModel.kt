@@ -1,4 +1,5 @@
 
+package com.example.rickandmorty.epxoybinding
 
 import android.view.View
 import androidx.annotation.LayoutRes

@@ -7,6 +7,10 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'com.google.devtools.ksp'
 }
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
 
 android {
     namespace 'com.example.rickandmorty'
