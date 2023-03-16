@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 nameTextView.text = character.name
                 aliveTextView.text = character.status
                 speciesTextView.text = character.species
-                originTextView.text = character.origin?.name
+                originTextView.text = character.origin.name
                 character.image.let { imageUrl ->
                     this.headerImageView.loadByCoil(imageUrl)
                 }
@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
     }
 
     private fun genderImageType(gender: String?): Int {

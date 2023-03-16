@@ -1,20 +1,21 @@
 package com.example.rickandmorty.ui.activities.arch
 
 import com.example.rickandmorty.GetCharacterByIdResponse
-import com.example.rickandmorty.network.RickAndMortyApi
+import com.example.rickandmorty.network.ApiClient
 
 class SharedRepo constructor(
-    private val rickAndMortyApi: RickAndMortyApi
+    private val apiClient: ApiClient
 ) {
 
     suspend fun characterById(characterId: Int): GetCharacterByIdResponse? {
 
-        val response = rickAndMortyApi.characterById(characterId)
+        val response = apiClient.characterById(characterId)
 
-        return if (response.isSuccessful)
-            response.body()
-        else
-            null
+        if (response.failed || response.isSuccessful.not()) {
+            return null
+        }
+
+        return response.body
 
     }
 

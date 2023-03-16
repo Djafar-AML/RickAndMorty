@@ -1,6 +1,6 @@
 package com.example.rickandmorty.hilt
 
-import com.example.rickandmorty.network.RickAndMortyApi
+import com.example.rickandmorty.network.ApiClient
 import com.example.rickandmorty.ui.activities.arch.SharedRepo
 import dagger.Module
 import dagger.Provides
@@ -14,6 +14,6 @@ object RepoModule {
 
     @Provides
     @Singleton
-    fun provideRepo(rickAndMortyApi: RickAndMortyApi): SharedRepo = SharedRepo(rickAndMortyApi)
+    fun provideRepo(apiClient: ApiClient): SharedRepo = SharedRepo(apiClient)
 
 }
