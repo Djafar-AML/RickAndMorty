@@ -82,6 +82,9 @@ dependencies {
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
     kapt("com.airbnb.android:epoxy-processor:$epoxyVersion")
 
+    // pagination
+    implementation "androidx.paging:paging-runtime-ktx:2.1.2"
+
 
     // recyclerview
     def recyclerviewVersion = "1.3.0"
