@@ -33,7 +33,7 @@ class CharactersDataSource @Inject constructor(
 
     }
 
-    override fun loadBefore(
+    override fun loadAfter(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, GetCharacterByIdResponse>
     ) {
@@ -48,11 +48,11 @@ class CharactersDataSource @Inject constructor(
             }
 
             callback.onResult(page.results, parsePageIndexFromNext(page.info.next))
-        }
 
+        }
     }
 
-    override fun loadAfter(
+    override fun loadBefore(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, GetCharacterByIdResponse>
     ) {
