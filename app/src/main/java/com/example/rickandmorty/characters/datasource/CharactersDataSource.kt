@@ -3,6 +3,7 @@ package com.example.rickandmorty.characters.datasource
 import androidx.paging.PageKeyedDataSource
 import com.example.rickandmorty.characters.repo.CharactersRepo
 import com.example.rickandmorty.network.response.GetCharacterByIdResponse
+import com.example.rickandmorty.network.response.GetCharactersPageResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,19 +20,36 @@ class CharactersDataSource @Inject constructor(
     ) {
 
         coroutineScope.launch {
-            val characterList = repo.characterList(1)
-            callback.onResult(characterList, null, 2)
+
+            val page: GetCharactersPageResponse? = repo.characterListPage(1)
+
+            if (page == null) {
+                callback.onResult(emptyList(), null, null)
+                return@launch
+            }
+
+            callback.onResult(page.results, null, parsePageIndexFromNext(page.info.next))
         }
+
     }
 
     override fun loadBefore(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, GetCharacterByIdResponse>
     ) {
+
         coroutineScope.launch {
-            val characterList = repo.characterList(params.key)
-            callback.onResult(characterList, params.key + 1)
+
+            val page = repo.characterListPage(params.key)
+
+            if (page == null) {
+                callback.onResult(emptyList(), null)
+                return@launch
+            }
+
+            callback.onResult(page.results, parsePageIndexFromNext(page.info.next))
         }
+
     }
 
     override fun loadAfter(
@@ -40,4 +58,9 @@ class CharactersDataSource @Inject constructor(
     ) {
         // nothing to do
     }
+
+    private fun parsePageIndexFromNext(next: String?): Int? {
+        return next?.split("?page=")?.get(1)?.toInt()
+    }
+
 }

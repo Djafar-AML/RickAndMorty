@@ -3,9 +3,9 @@ package com.example.rickandmorty.network
 import retrofit2.Response
 
 data class SimpleResponse<T>(
-    val status: Status,
-    val data: Response<T>?,
-    val exception: Exception?
+    private val status: Status,
+    private val data: Response<T>?,
+    private val exception: Exception?
 ) {
 
     companion object {
