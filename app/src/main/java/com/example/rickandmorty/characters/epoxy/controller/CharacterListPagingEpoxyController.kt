@@ -8,14 +8,21 @@ import com.example.rickandmorty.network.response.GetCharacterByIdResponse
 import com.example.rickandmorty.ui.activities.epoxy.model.LoadingEpoxyModel
 import java.util.*
 
-class CharacterListPagingEpoxyController : PagedListEpoxyController<GetCharacterByIdResponse>() {
+class CharacterListPagingEpoxyController(
+    private val onItemClickCallback: (Int) -> Unit
+) : PagedListEpoxyController<GetCharacterByIdResponse>() {
 
     override fun buildItemModel(
         currentPosition: Int,
         item: GetCharacterByIdResponse?
     ): EpoxyModel<*> {
 
-        return CharacterGridItemEpoxyModel(item!!.image, item.name).id(item.id)
+        return CharacterGridItemEpoxyModel(
+            itemId = item!!.id,
+            item.image,
+            item.name,
+            onItemClickCallback
+        ).id(item.id)
     }
 
     override fun addModels(models: List<EpoxyModel<*>>) {

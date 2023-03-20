@@ -6,12 +6,19 @@ import com.example.rickandmorty.epxoybinding.ViewBindingKotlinModel
 import com.example.rickandmorty.extensions.loadByCoil
 
 data class CharacterGridItemEpoxyModel(
+    private val itemId: Int,
     private val imageUrl: String,
-    val name: String
-) : ViewBindingKotlinModel<ModelCharacterListItemBinding>(R.layout.model_character_list_item) {
+    val name: String,
+    val onItemClickCallback: (Int) -> Unit,
+
+    ) : ViewBindingKotlinModel<ModelCharacterListItemBinding>(R.layout.model_character_list_item) {
 
     override fun ModelCharacterListItemBinding.bind() {
         characterImageView.loadByCoil(imageUrl)
         characterNameTextView.text = name
+
+        root.setOnClickListener {
+            onItemClickCallback(itemId)
+        }
     }
 }
