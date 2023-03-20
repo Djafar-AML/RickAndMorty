@@ -7,7 +7,7 @@ import com.example.rickandmorty.extensions.loadByCoil
 
 data class CharacterGridItemEpoxyModel(
     private val imageUrl: String,
-    private val name: String
+    val name: String
 ) : ViewBindingKotlinModel<ModelCharacterListItemBinding>(R.layout.model_character_list_item) {
 
     override fun ModelCharacterListItemBinding.bind() {
