@@ -2,6 +2,7 @@ package com.example.rickandmorty.network
 
 import com.example.rickandmorty.network.response.GetCharacterByIdResponse
 import com.example.rickandmorty.network.response.GetCharactersPageResponse
+import com.example.rickandmorty.network.response.GetEpisodeByIdResponse
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -15,6 +16,14 @@ class ApiClient @Inject constructor(
 
     suspend fun characterListPage(pageIndex: Int): SimpleResponse<GetCharactersPageResponse> {
         return safeApiCall { rickAndMortyApi.characterList(pageIndex) }
+    }
+
+    suspend fun episodeById(episodeId: Int): SimpleResponse<GetEpisodeByIdResponse> {
+        return safeApiCall { rickAndMortyApi.episodeById(episodeId) }
+    }
+
+    suspend fun episodeRage(episodeRange: String): SimpleResponse<List<GetEpisodeByIdResponse>> {
+        return safeApiCall { rickAndMortyApi.episodeRange(episodeRange) }
     }
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {

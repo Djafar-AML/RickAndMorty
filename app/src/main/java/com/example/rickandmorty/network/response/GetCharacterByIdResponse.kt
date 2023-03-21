@@ -1,8 +1,11 @@
 package com.example.rickandmorty.network.response
 
+import com.squareup.moshi.Json
+
 data class GetCharacterByIdResponse(
     val created: String = "",
-    val episode: List<String> = listOf(),
+    @Json(name = "episode")
+    val episodeList: List<String> = listOf(),
     val gender: String = "",
     val id: Int = 0,
     val image: String = "",

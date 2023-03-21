@@ -3,6 +3,7 @@ package com.example.rickandmorty.ui.activities.arch
 import com.example.rickandmorty.domain.mapper.CharacterMapper
 import com.example.rickandmorty.domain.models.Character
 import com.example.rickandmorty.network.ApiClient
+import com.example.rickandmorty.network.response.GetEpisodeByIdResponse
 
 class SharedRepo constructor(
     private val apiClient: ApiClient
@@ -16,7 +17,34 @@ class SharedRepo constructor(
             return null
         }
 
-        return CharacterMapper.buildFrom(response.body)
+        val networkEpisodes = episodesFormCharacterResponse(response.body.episodeList)
+
+        return CharacterMapper.buildFrom(
+            response.body,
+            networkEpisodes
+        )
+
+    }
+
+    private suspend fun episodesFormCharacterResponse(episodeList: List<String>): List<GetEpisodeByIdResponse> {
+
+        val episodeRange = episodeRange(episodeList)
+
+        val response = apiClient.episodeRage(episodeRange)
+
+        if (response.failed || response.isSuccessful.not()) {
+            return emptyList()
+        }
+
+        return response.body
+
+    }
+
+    private fun episodeRange(episode: List<String>): String {
+
+        return episode.map {
+            it.substring(it.lastIndexOf("/") + 1)
+        }.toString()
 
     }
 
