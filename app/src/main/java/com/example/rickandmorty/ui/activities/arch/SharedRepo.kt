@@ -1,13 +1,14 @@
 package com.example.rickandmorty.ui.activities.arch
 
-import com.example.rickandmorty.network.response.GetCharacterByIdResponse
+import com.example.rickandmorty.domain.mapper.CharacterMapper
+import com.example.rickandmorty.domain.models.Character
 import com.example.rickandmorty.network.ApiClient
 
 class SharedRepo constructor(
     private val apiClient: ApiClient
 ) {
 
-    suspend fun characterById(characterId: Int): GetCharacterByIdResponse? {
+    suspend fun characterById(characterId: Int): Character? {
 
         val response = apiClient.characterById(characterId)
 
@@ -15,7 +16,7 @@ class SharedRepo constructor(
             return null
         }
 
-        return response.body
+        return CharacterMapper.buildFrom(response.body)
 
     }
 

@@ -1,7 +1,7 @@
 package com.example.rickandmorty.ui.activities.epoxy.controller
 
 import com.airbnb.epoxy.EpoxyController
-import com.example.rickandmorty.network.response.GetCharacterByIdResponse
+import com.example.rickandmorty.domain.models.Character
 import com.example.rickandmorty.ui.activities.epoxy.model.DataPointEpoxyModel
 import com.example.rickandmorty.ui.activities.epoxy.model.HeaderEpoxyModel
 import com.example.rickandmorty.ui.activities.epoxy.model.ImageEpoxyModel
@@ -18,7 +18,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             }
         }
 
-    var characterResponse: GetCharacterByIdResponse? = null
+    var characterResponse: Character? = null
         set(value) {
             field = value
             if (value != null) {
