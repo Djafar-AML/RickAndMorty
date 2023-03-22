@@ -1,4 +1,4 @@
-package com.example.rickandmorty.ui.activities.characterdetail.epoxy.model
+package com.example.rickandmorty.ui.fragments.characterdetail.epoxy.model
 
 import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.ModelCharacterDetailsHeaderBinding

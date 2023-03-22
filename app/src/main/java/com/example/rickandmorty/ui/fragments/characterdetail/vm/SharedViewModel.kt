@@ -1,11 +1,11 @@
-package com.example.rickandmorty.ui.activities.characterdetail.vm
+package com.example.rickandmorty.ui.fragments.characterdetail.vm
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rickandmorty.domain.models.Character
 import com.example.rickandmorty.extensions.asLiveData
-import com.example.rickandmorty.ui.activities.characterdetail.repo.SharedRepo
+import com.example.rickandmorty.ui.fragments.characterdetail.repo.SharedRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

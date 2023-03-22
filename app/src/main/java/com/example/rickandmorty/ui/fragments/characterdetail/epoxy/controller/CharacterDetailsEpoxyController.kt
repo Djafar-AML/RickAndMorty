@@ -1,9 +1,9 @@
-package com.example.rickandmorty.ui.activities.characterdetail.epoxy.controller
+package com.example.rickandmorty.ui.fragments.characterdetail.epoxy.controller
 
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.example.rickandmorty.domain.models.Character
-import com.example.rickandmorty.ui.activities.characterdetail.epoxy.model.*
+import com.example.rickandmorty.ui.fragments.characterdetail.epoxy.model.*
 import java.util.*
 
 class CharacterDetailsEpoxyController : EpoxyController() {

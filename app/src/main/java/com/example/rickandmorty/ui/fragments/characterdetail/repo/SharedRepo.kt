@@ -1,4 +1,4 @@
-package com.example.rickandmorty.ui.activities.characterdetail.repo
+package com.example.rickandmorty.ui.fragments.characterdetail.repo
 
 import com.example.rickandmorty.domain.mapper.CharacterMapper
 import com.example.rickandmorty.domain.models.Character

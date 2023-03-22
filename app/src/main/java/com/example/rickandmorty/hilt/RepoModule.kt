@@ -1,7 +1,7 @@
 package com.example.rickandmorty.hilt
 
 import com.example.rickandmorty.network.ApiClient
-import com.example.rickandmorty.ui.activities.characterdetail.repo.SharedRepo
+import com.example.rickandmorty.ui.fragments.characterdetail.repo.SharedRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,11 +1,11 @@
-package com.example.rickandmorty.ui.activities.characters.epoxy.controller
+package com.example.rickandmorty.ui.fragments.characters.epoxy.controller
 
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
-import com.example.rickandmorty.ui.activities.characters.epoxy.model.CharacterGridItemEpoxyModel
-import com.example.rickandmorty.ui.activities.characters.epoxy.model.CharacterListTitleEpoxyModel
+import com.example.rickandmorty.ui.fragments.characters.epoxy.model.CharacterGridItemEpoxyModel
+import com.example.rickandmorty.ui.fragments.characters.epoxy.model.CharacterListTitleEpoxyModel
 import com.example.rickandmorty.network.response.GetCharacterByIdResponse
-import com.example.rickandmorty.ui.activities.characterdetail.epoxy.model.LoadingEpoxyModel
+import com.example.rickandmorty.ui.fragments.characterdetail.epoxy.model.LoadingEpoxyModel
 import java.util.*
 
 class CharacterListPagingEpoxyController(
