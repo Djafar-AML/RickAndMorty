@@ -1,11 +1,9 @@
 package com.example.rickandmorty.ui.activities.epoxy.controller
 
+import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.example.rickandmorty.domain.models.Character
-import com.example.rickandmorty.ui.activities.epoxy.model.DataPointEpoxyModel
-import com.example.rickandmorty.ui.activities.epoxy.model.HeaderEpoxyModel
-import com.example.rickandmorty.ui.activities.epoxy.model.ImageEpoxyModel
-import com.example.rickandmorty.ui.activities.epoxy.model.LoadingEpoxyModel
+import com.example.rickandmorty.ui.activities.epoxy.model.*
 import java.util.*
 
 class CharacterDetailsEpoxyController : EpoxyController() {
@@ -54,6 +52,12 @@ class CharacterDetailsEpoxyController : EpoxyController() {
                 imageUrl = character.image
             ).id("image ${UUID.randomUUID()}").addTo(this)
 
+            // episode carousel list section
+            if (character.episodeList.isNotEmpty()) {
+                addTitleForCarousel(title = "Episodes")
+                addEpisodeCarousel(character)
+            }
+
             // data points model(s)
             DataPointEpoxyModel(
                 title = "Origin",
@@ -68,4 +72,25 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         }
 
     }
+
+    private fun addTitleForCarousel(title: String) {
+        TitleEpoxyModel(title)
+            .id("title ${UUID.randomUUID()}")
+            .addTo(this)
+    }
+
+    private fun addEpisodeCarousel(character: Character) {
+
+        val items = episodeCarouselModels(character)
+        CarouselModel_()
+            .id("carousel ${UUID.randomUUID()}")
+            .models(items)
+            .numViewsToShowOnScreen(1.5f)
+            .addTo(this)
+    }
+
+    private fun episodeCarouselModels(character: Character) =
+        character.episodeList.map {
+            EpisodeCaresouselItemEpoxyModel(it).id(it.id)
+        }
 }
