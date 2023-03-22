@@ -1,4 +1,4 @@
-package com.example.rickandmorty.characters.repo
+package com.example.rickandmorty.ui.activities.characters.repo
 
 import com.example.rickandmorty.network.ApiClient
 import com.example.rickandmorty.network.response.GetCharactersPageResponse

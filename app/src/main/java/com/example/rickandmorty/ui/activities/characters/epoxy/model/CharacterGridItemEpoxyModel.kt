@@ -1,4 +1,4 @@
-package com.example.rickandmorty.characters.epoxy.model
+package com.example.rickandmorty.ui.activities.characters.epoxy.model
 
 import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.ModelCharacterListItemBinding

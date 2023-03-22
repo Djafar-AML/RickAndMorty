@@ -1,7 +1,7 @@
-package com.example.rickandmorty.characters.datasource
+package com.example.rickandmorty.ui.activities.characters.datasource
 
 import androidx.paging.PageKeyedDataSource
-import com.example.rickandmorty.characters.repo.CharactersRepo
+import com.example.rickandmorty.ui.activities.characters.repo.CharactersRepo
 import com.example.rickandmorty.network.response.GetCharacterByIdResponse
 import com.example.rickandmorty.network.response.GetCharactersPageResponse
 import kotlinx.coroutines.CoroutineScope

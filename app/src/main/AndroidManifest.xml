@@ -15,7 +15,7 @@
         android:theme="@style/Theme.RickAndMorty"
         tools:targetApi="31">
         <activity
-            android:name=".characters.CharacterListActivity"
+            android:name=".ui.activities.characters.ui.CharacterListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.activities.characterdetail.ui.CharacterDetailActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
