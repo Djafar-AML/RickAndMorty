@@ -3,7 +3,7 @@ package com.example.rickandmorty.ui.activities.characterdetail.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.rickandmorty.databinding.ActivityMainBinding
+import com.example.rickandmorty.databinding.ActivityCharacterDetailBinding
 import com.example.rickandmorty.ui.activities.characterdetail.vm.SharedViewModel
 import com.example.rickandmorty.ui.activities.characterdetail.epoxy.controller.CharacterDetailsEpoxyController
 import com.example.rickandmorty.util.CHARACTER_ID
@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CharacterDetailActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityCharacterDetailBinding.inflate(layoutInflater) }
 
     private val sharedViewModel: SharedViewModel by viewModels()
 
