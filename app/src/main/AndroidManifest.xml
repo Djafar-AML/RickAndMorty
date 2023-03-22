@@ -16,6 +16,14 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.activities.characters.ui.CharacterListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.activities.characterdetail.ui.CharacterDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.activities.NavGraphActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activities.characterdetail.ui.CharacterDetailActivity"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
     </application>
 
 </manifest>
