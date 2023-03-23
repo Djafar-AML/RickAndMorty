@@ -85,7 +85,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         CarouselModel_()
             .id("carousel ${UUID.randomUUID()}")
             .models(items)
-            .numViewsToShowOnScreen(1.5f)
+            .numViewsToShowOnScreen(1.1f)
             .addTo(this)
     }
 

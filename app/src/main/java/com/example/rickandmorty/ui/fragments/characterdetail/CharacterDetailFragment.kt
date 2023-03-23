@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.rickandmorty.databinding.FragmentCharacterDetailBinding
+import com.example.rickandmorty.ui.fragments.base.BaseFragment
 import com.example.rickandmorty.ui.fragments.characterdetail.epoxy.controller.CharacterDetailsEpoxyController
 import com.example.rickandmorty.ui.fragments.characterdetail.vm.SharedViewModel
-import com.example.rickandmorty.ui.fragments.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
