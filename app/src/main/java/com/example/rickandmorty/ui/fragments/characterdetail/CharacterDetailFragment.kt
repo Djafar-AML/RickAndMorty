@@ -34,9 +34,13 @@ class CharacterDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        refreshCharacter()
         initEpoxyRecyclerView()
+        refreshCharacter()
         setupObservers()
+    }
+
+    private fun initEpoxyRecyclerView() {
+        binding.epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
 
     private fun refreshCharacter() {
@@ -50,10 +54,6 @@ class CharacterDetailFragment : BaseFragment() {
             epoxyController.characterResponse = character
         }
 
-    }
-
-    private fun initEpoxyRecyclerView() {
-        binding.epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
 
     override fun onDestroy() {
