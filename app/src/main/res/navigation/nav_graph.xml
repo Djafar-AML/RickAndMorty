@@ -26,9 +26,13 @@
         android:name="com.example.rickandmorty.ui.fragments.characterdetail.CharacterDetailFragment"
         android:label="fragment_character_detail"
         tools:layout="@layout/fragment_character_detail">
+
+        <deepLink app:uri="https://rickandmortyapi.com/api/character/{itemId}" />
+
         <argument
             android:name="itemId"
             app:argType="integer" />
+
     </fragment>
 
 </navigation>
