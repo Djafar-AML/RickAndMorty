@@ -1,5 +1,6 @@
 package com.example.rickandmorty.ui.fragments.characterdetail.repo
 
+import com.example.rickandmorty.cache.CharacterDetailCache
 import com.example.rickandmorty.domain.mapper.CharacterMapper
 import com.example.rickandmorty.domain.models.Character
 import com.example.rickandmorty.network.ApiClient
@@ -11,7 +12,12 @@ class SharedRepo constructor(
 
     suspend fun characterById(characterId: Int): Character? {
 
+        if (hasCharacterCached(characterId)) {
+            return cachedCharacter(characterId)
+        }
+
         val response = apiClient.characterById(characterId)
+
 
         if (response.failed || response.isSuccessful.not()) {
             return null
@@ -19,10 +25,11 @@ class SharedRepo constructor(
 
         val networkEpisodes = episodesFormCharacterResponse(response.body.episodeList)
 
-        return CharacterMapper.buildFrom(
-            response.body,
-            networkEpisodes
-        )
+        val character = CharacterMapper.buildFrom(response.body, networkEpisodes)
+
+        cacheCharacter(character)
+
+        return character
 
     }
 
@@ -46,6 +53,18 @@ class SharedRepo constructor(
             it.substring(it.lastIndexOf("/") + 1)
         }.toString()
 
+    }
+
+    private fun hasCharacterCached(characterId: Int) =
+        CharacterDetailCache.characterDetailMap.contains(characterId)
+
+    private fun cachedCharacter(characterId: Int): Character? =
+        CharacterDetailCache.characterDetailMap[characterId]
+
+    private fun cacheCharacter(character: Character?) {
+        character?.let {
+            CharacterDetailCache.characterDetailMap[character.id] = character
+        }
     }
 
 }
