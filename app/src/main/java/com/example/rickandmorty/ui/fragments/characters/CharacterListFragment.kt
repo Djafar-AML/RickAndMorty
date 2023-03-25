@@ -46,6 +46,7 @@ class CharacterListFragment : BaseFragment() {
 
     private fun onItemClickCallback(itemId: Int) {
 
+        throw RuntimeException("for crashlytics")
         val direction = CharacterListFragmentDirections.toCharacterDetailFragment(itemId)
         navigateViaNavGraph(direction)
 
