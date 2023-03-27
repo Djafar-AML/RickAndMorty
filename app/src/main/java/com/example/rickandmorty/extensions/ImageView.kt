@@ -6,9 +6,9 @@ import coil.transform.CircleCropTransformation
 import com.example.rickandmorty.R
 
 
-fun ImageView.loadByCoil(imageUrl: String, placeholder: Int = R.drawable.ic_episode_24) {
+fun ImageView.loadByCoil(imageUrl: String, placeholder: Int = R.drawable.ic_image_placeholder) {
 
-    this.load(imageUrl){
+    this.load(imageUrl) {
         crossfade(true)
         placeholder(placeholder)
         transformations(CircleCropTransformation())
